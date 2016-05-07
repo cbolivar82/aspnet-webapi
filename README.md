@@ -15,8 +15,7 @@ It is a service to get data through a POST method a connection string you can ge
 
 With the rest client (SOAP UI for example), you must invoke the POST method `../api/DataSource/GetData`, and you must use some these object, according to resource type:
 
-## Tables ##
----
+### Tables ###
 ```javascript
 {
   "ResourceType": "table",
