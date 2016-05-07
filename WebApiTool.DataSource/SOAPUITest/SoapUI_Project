@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="cc38bebf-e69d-48ac-ae55-2d26f3daad7a" activeEnvironment="Default" name="REST Project" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="5a72c834-f832-47f7-809d-8c5c69714464" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost</con:endpoint></con:endpoints><con:resource name="GetData" path="/WebApiTool.DataSource/api/DataSource/GetData" id="1f59cd2e-b07d-4012-afe1-3854e91cf9a5"><con:settings/><con:parameters/><con:method name="GetData" id="cb1ecf26-f696-42d6-b8f5-94fc5c72ddbd" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:get="http://localhost/WebApiTool.DataSource/api/DataSource/GetData">get:Fault</con:element></con:representation><con:request name="Request" id="a6a9540b-bdf6-4532-8908-4140d25feb3f" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "DataType": null,
+      "Operator": null,
+      "OrderBy": "ASC",
+      "Values": null
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+        "Enabled": "on",
+        "Id": "10",
+        "Name": "documentCode",
+        "Operator": "=",
+        "OrderBy": "ASC",
+        "Values": ["177840", "177841", "177842"]
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="4cfdc15f-77f9-4b40-9104-f31e7c7559b9" name="TestSuite - Table"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="8b84d5eb-925a-4439-91ef-6fe64f82f612" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="Select all" id="affa4bf5-157d-42ee-bc97-89179effbf65"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select all" id="7a4f365f-6482-46c4-b3b2-4792902677d6" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities"
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10" id="e702bc58-2846-4cf4-9c4b-33950fd0d10d"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select top 10" id="40658245-fcee-4264-9de7-4360df9622bf" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10, a couples fields and order by field [number]" id="d39e75f1-9094-4f18-9dba-bda514e4cae3"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select top 10, a couples fields and order by field [number]" id="e6a710ee-412e-43b8-b18a-63ad6e16697a" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+    "ResourceType": "table",
+    "ResourceName": "Customer",
+    "ConnectionStringName": "TestDbEntities",
+    "Top": 10,
+    "Fields": [
+        "GUID",
+        "number",
+        "documentCode",
+        "beginDate",
+        "customerId"
+    ],
+    "Filters": [
+        {
+            "Name": "number",
+            "OrderBy": "ASC"
+        }
+    ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10 and order by field [number]" id="fceb50d2-680c-494e-b22c-43cf4527f049"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select top 10 and order by field [number]" id="e6a710ee-412e-43b8-b18a-63ad6e16697a" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC"
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10, beginDate >= 01/01/2013 and order by [number]" id="561af7a7-0ee1-4bc2-8e56-94981a266a3a"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select top 10, beginDate >= 01/01/2013 and order by [number]" id="da291b12-5aa1-4e4f-9f77-683526be320f" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "DataType": null,
+      "Operator": null,
+      "OrderBy": "ASC",
+      "Values": null
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10, beginDate >= 01/01/2013, documentCode = [ &quot;177840&quot;, &quot;177841&quot;, &quot;177842&quot; ] and order by [number]" id="9ae911e4-2920-4309-8314-5fac9d28b744"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select top 10, beginDate >= 01/01/2013, documentCode = [&quot;177840&quot;, &quot;177841&quot;, &quot;177842&quot;] and order by [number]" id="2607f80e-1d47-426a-90e0-b941972e83a3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC",
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+      "Name": "documentCode",
+      "Operator": "=",
+      "OrderBy": "ASC",
+      "Values": [ "177840", "177841", "177842" ]
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10, beginDate >= 01/01/2013, documentCode = [ &quot;177840&quot;] and order by [number]" id="75874e1c-c20c-4608-ae85-e348c210d9ab"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of table - Select top 10, beginDate >= 01/01/2013, documentCode = [&quot;177840&quot;] and order by [number]" id="2607f80e-1d47-426a-90e0-b941972e83a3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC",
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+      "Name": "documentCode",
+      "Operator": "=",
+      "OrderBy": "ASC",
+      "Values": [ "177840" ]
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Select top 10, beginDate >= 01/01/2013, documentCode like [&quot;177840&quot;, &quot;177841&quot;, &quot;177842&quot;] and order by [number]" id="04a79bea-8bff-451d-a326-f32a9d892cb1"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="table - Select top 10, beginDate >= 01/01/2013, documentCode like [&quot;177840&quot;, &quot;177841&quot;, &quot;177842&quot;] and order by [number]" id="2607f80e-1d47-426a-90e0-b941972e83a3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC",
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+      "Name": "documentCode",
+      "DataType": 2,
+      "OrderBy": "ASC",
+      "Values": [ "177840", "177841", "177842" ]
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="26fcdc96-d1b0-4abb-9d39-969189edcf87" name="TestSuite - Store Procedure"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b81b2531-4659-4bbb-928b-e86ce9cc700d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="SP  Example" id="fabb5388-f6d8-421f-bd57-e2519b926391"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Select all" id="7a4f365f-6482-46c4-b3b2-4792902677d6" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+    "ResourceType": "sp",
+    "ResourceName": "sp_CustomerSelect",
+    "ConnectionStringName": "TestDbEntities",
+    "Fields": [ "GUID", "documentCode", "beginDate", "invoiceClosedTime" ],
+    "Filters": [
+        {
+            "Name": "documentCode",
+            "Value": "177840"
+        }
+    ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="SP  Example with a couples fields" id="f60c0d4f-14fd-4730-a978-dc42bd5cbd5b"><con:settings/><con:config service="http://localhost" methodName="GetData" resourcePath="/WebApiTool.DataSource/api/DataSource/GetData" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="SP  Example with a couples fields" id="7a4f365f-6482-46c4-b3b2-4792902677d6" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost</con:endpoint><con:request>{
+    "ResourceType": "sp",
+    "ResourceName": "sp_CustomerSelect",
+    "ConnectionStringName": "TestDbEntities",
+
+    "Filters": [
+        {
+            "Name": "documentCode",
+            "Value": "177840"
+        }
+    ]
+}</con:request><con:originalUri>http://localhost/WebApiTool.DataSource/api/DataSource/GetData</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
