@@ -16,7 +16,11 @@ It is a service to get data through a POST method a connection string you can ge
 With the rest client (SOAP UI for example), you must invoke the POST method `../api/DataSource/GetData`, and you must use some these object, according to resource type:
 
 ### Tables ###
+
+
 ```javascript
+// Select all
+
 {
   "ResourceType": "table",
   "ResourceName": "Customer",
@@ -24,11 +28,207 @@ With the rest client (SOAP UI for example), you must invoke the POST method `../
 }
 ```
 
+```javascript
+// Select top 10
 
+{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10
+}
+```
+
+```javascript
+// Select top 10, a couples fields and order by field [number]
+
+{
+    "ResourceType": "table",
+    "ResourceName": "Customer",
+    "ConnectionStringName": "TestDbEntities",
+    "Top": 10,
+    "Fields": [
+        "GUID",
+        "number",
+        "documentCode",
+        "beginDate",
+        "customerId"
+    ],
+    "Filters": [
+        {
+            "Name": "number",
+            "OrderBy": "ASC"
+        }
+    ]
+}
+```
+
+```javascript
+// Select top 10 and order by field [number]
+
+{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC"
+    }
+  ]
+}
+```
+
+```javascript
+// Select top 10, beginDate >= 01/01/2013 and order by [number]
+
+{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "DataType": null,
+      "Operator": null,
+      "OrderBy": "ASC",
+      "Values": null
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    }
+  ]
+}
+```
+
+```javascript
+// Select top 10, beginDate >= 01/01/2013, documentCode = [ "177840", "177841", "177842" ] and order by [number]
+{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC",
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+      "Name": "documentCode",
+      "Operator": "=",
+      "OrderBy": "ASC",
+      "Values": [ "177840", "177841", "177842" ]
+    }
+  ]
+}
+```
+
+```javascript
+// Select top 10, beginDate >= 01/01/2013, documentCode = [ "177840"] and order by [number]
+{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Fields": null,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC",
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+      "Name": "documentCode",
+      "Operator": "=",
+      "OrderBy": "ASC",
+      "Values": [ "177840" ]
+    }
+  ]
+}
+```
+
+```javascript
+// Select top 10, beginDate >= 01/01/2013, documentCode like ["177840", "177841", "177842"] and order by [number]
+{
+  "ResourceType": "table",
+  "ResourceName": "Customer",
+  "ConnectionStringName": "TestDbEntities",
+  "Top": 10,
+  "Filters": [
+    {
+      "Name": "number",
+      "OrderBy": "ASC",
+    },
+    {
+      "Name": "beginDate",
+      "DataType": 3,
+      "Operator": ">=",
+      "OrderBy": "ASC",
+      "Value": "12-21-2012"
+    },
+    {
+      "Name": "documentCode",
+      "DataType": 2,
+      "OrderBy": "ASC",
+      "Values": [ "177840", "177841", "177842" ]
+    }
+  ]
+}
+```
 
 
 ## Stores Procedures ###
----
+```javascript
+// Select all fields of the store procedure
+{
+    "ResourceType": "sp",
+    "ResourceName": "sp_CustomerSelect",
+    "ConnectionStringName": "TestDbEntities",
+    "Fields": [ "GUID", "documentCode", "beginDate", "invoiceClosedTime" ],
+    "Filters": [
+        {
+            "Name": "documentCode",
+            "Value": "177840"
+        }
+    ]
+}
+```
+```javascript
+// Select a couples fields of the store procedure
+{
+    "ResourceType": "sp",
+    "ResourceName": "sp_CustomerSelect",
+    "ConnectionStringName": "TestDbEntities",
+
+    "Filters": [
+        {
+            "Name": "documentCode",
+            "Value": "177840"
+        }
+    ]
+}
+```
 
 
 
