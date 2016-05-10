@@ -44,7 +44,7 @@ That is the object properties, definition and examples values:
 
 `[3] When you use this type, the where clausulae will be a LIKE operator (i.e. LIKE '%value%').`
 
-##That is the full structure object for request:##
+###That is the full structure object for request:###
 
 ```javascript
 // Object structure definition
@@ -75,7 +75,7 @@ That is the object properties, definition and examples values:
   ]
 }
 ```
-Response example:
+###That is a response example: ###
 ```javascript
   [
       {
