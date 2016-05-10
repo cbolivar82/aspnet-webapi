@@ -126,7 +126,6 @@ ___
 
 ### Request examples to get date from [Tables] ###
 
-Request:
 ```javascript
 // Select all
 {
