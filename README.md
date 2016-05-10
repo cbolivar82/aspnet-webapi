@@ -36,9 +36,9 @@ That is the object properties, definition and examples values:
 | Filters.Values            | String array to set multiples values on query | ["value1", "value2" ,"value3"] |
 
 
-, the option are: `1->Numeric 2->Date 3->Text`
+the option are: `1->Numeric 2->Date 3->Text`
 
-That is the full structure
+##That is the full structure##
 
 ```javascript
 // Object structure definition
