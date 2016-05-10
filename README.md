@@ -24,7 +24,7 @@ That is the object properties, definition and examples values:
 |:--------------------------|:----------------------|:---------------------|
 | ResourceType              | You must indicate if it is a table or store procedure         | "sp" or "table"               |
 | ResourceName              | You must indicate the name of table or store procedure| "Customer" or "sp_CustomerSelect" |
-| ConnectionStringName      | You must indicate the connection string name that stroge on the web.config | |
+| ConnectionStringName      | You must indicate the connection string name that stroge on the web.config |- |
 | Top                       | It is to do a select with top on select statements | - |
 | Fields                    | It is a string array with field to select if it is null the service do a select * | ["field1", "field2", "field3"] |
 | Filters                   | It is an object array with filter to where clausulae if it is null the service do a select * | - |
