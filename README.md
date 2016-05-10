@@ -75,10 +75,58 @@ That is the object properties, definition and examples values:
   ]
 }
 ```
+Response example:
+```javascript
+  [
+      {
+      "id": 1034833,
+      "GUID": "637d80bc-4930-4b18-93f6-bf49bca99881",
+      "number": 2293,
+      "documentCode": "348806",
+      "beginDate": "2012-11-30",
+      "customerId": "5520099",
+      "invoiceClosedTime": "03:59:12 A.M.",
+      "totalAmount": "4508",
+      "customerName": "MARIA J CAMELIO DE RUIZ",
+      "serialCode": "CVRF3",
+      "companyCodeInSerialCode": "V",
+      "customerType": "R",
+      "productCode": "F",
+      "key": "3",
+      "companyCode": "V",
+      "customerEmail": "cbolivar82@gmail.com",
+      "customerTelephone": "",
+      "customerAddress": "COLONIA TOVAR SECT CAMBURAL  PROPATRIA DTTOFEDERALCaracas     111",
+      "isCopyDocument": true
+   },
+      {
+      "id": 1026930,
+      "GUID": "8141694c-5442-4a97-bf33-bf0dc7c218ad",
+      "number": 1072,
+      "documentCode": "67614",
+      "beginDate": "2012-12-01",
+      "customerId": "11800410",
+      "invoiceClosedTime": "05:59:52 A.M.",
+      "totalAmount": "14000",
+      "customerName": "SUAREZ MIQUELENA ABELINA DEL CARMEN",
+      "serialCode": "BIRF1",
+      "companyCodeInSerialCode": "I",
+      "customerType": "R",
+      "productCode": "F",
+      "key": "1",
+      "companyCode": "I",
+      "customerEmail": "cbolivar82@gmail.com",
+      "customerTelephone": "",
+      "customerAddress": "CRR.4 / CLL.4 Y 5. CASA 05-00. MONTEZUMA 2.,CERCADELA PARADADE RAPIDITO MARIA ESTRELLA.Barquisimeto     111",
+      "isCopyDocument": true
+   }
+]
+```
+___
 
-### Examples to get date from [Tables] ###
+### Request examples to get date from [Tables] ###
 
-
+Request:
 ```javascript
 // Select all
 {
@@ -255,7 +303,7 @@ That is the object properties, definition and examples values:
 ```
 
 
-## Examples to get date from [Stores Procedures] ###
+## Request examples to get date from [Stores Procedures] ###
 ```javascript
 // Select all fields of the store procedure
 {
