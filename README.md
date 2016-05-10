@@ -36,9 +36,13 @@ That is the object properties, definition and examples values:
 | Filters.Values            | String array to set multiples values on query | ["value1", "value2" ,"value3"] |
 
 
-the option are: `1->Numeric 2->Date 3->Text`
+###DataType allow the following values:###
 
-##That is the full structure##
+`[1] Represent a Numeric value.`
+`[2] Represent Date value with the format mm/dd/yyyy`
+`[3] When you use this type, the where clausule will be a LIKE operator (i.e. LIKE '%value%') `
+
+##That is the full structure object for request:##
 
 ```javascript
 // Object structure definition
