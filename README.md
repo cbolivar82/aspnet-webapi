@@ -39,8 +39,10 @@ That is the object properties, definition and examples values:
 ###DataType allow the following values:###
 
 `[1] Represent a Numeric value.`
-`[2] Represent Date value with the format mm/dd/yyyy`
-`[3] When you use this type, the where clausule will be a LIKE operator (i.e. LIKE '%value%') `
+
+`[2] Represent Date value with the format mm/dd/yyyy.`
+
+`[3] When you use this type, the where clausule will be a LIKE operator (i.e. LIKE '%value%').`
 
 ##That is the full structure object for request:##
 
@@ -74,7 +76,7 @@ That is the object properties, definition and examples values:
 }
 ```
 
-### Examples to Tables ###
+### Examples to get date from [Tables] ###
 
 
 ```javascript
@@ -253,7 +255,7 @@ That is the object properties, definition and examples values:
 ```
 
 
-## Examples to Stores Procedures ###
+## Examples to get date from [Stores Procedures] ###
 ```javascript
 // Select all fields of the store procedure
 {
