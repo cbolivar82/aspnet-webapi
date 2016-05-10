@@ -44,7 +44,7 @@ That is the object properties, definition and examples values:
 
 `[3] When you use this type, the where clausulae will be a LIKE operator (i.e. LIKE '%value%').`
 
-###That is the full structure object for request:###
+###This is the full structure object for request:###
 
 ```javascript
 // Object structure definition
@@ -75,7 +75,7 @@ That is the object properties, definition and examples values:
   ]
 }
 ```
-###That is a response example: ###
+###This is a response example: ###
 ```javascript
   [
       {
@@ -84,10 +84,10 @@ That is the object properties, definition and examples values:
       "number": 2293,
       "documentCode": "348806",
       "beginDate": "2012-11-30",
-      "customerId": "5520099",
+      "customerId": "1235478",
       "invoiceClosedTime": "03:59:12 A.M.",
       "totalAmount": "4508",
-      "customerName": "MARIA J CAMELIO DE RUIZ",
+      "customerName": "MARIA DE RUIZ",
       "serialCode": "CVRF3",
       "companyCodeInSerialCode": "V",
       "customerType": "R",
@@ -96,7 +96,7 @@ That is the object properties, definition and examples values:
       "companyCode": "V",
       "customerEmail": "cbolivar82@gmail.com",
       "customerTelephone": "",
-      "customerAddress": "COLONIA TOVAR SECT CAMBURAL  PROPATRIA DTTOFEDERALCaracas     111",
+      "customerAddress": "COLONIA TOVAR SECT",
       "isCopyDocument": true
    },
       {
@@ -105,10 +105,10 @@ That is the object properties, definition and examples values:
       "number": 1072,
       "documentCode": "67614",
       "beginDate": "2012-12-01",
-      "customerId": "11800410",
+      "customerId": "12345678",
       "invoiceClosedTime": "05:59:52 A.M.",
       "totalAmount": "14000",
-      "customerName": "SUAREZ MIQUELENA ABELINA DEL CARMEN",
+      "customerName": "SUAREZ MIQUELENA DEL CARMEN",
       "serialCode": "BIRF1",
       "companyCodeInSerialCode": "I",
       "customerType": "R",
@@ -117,7 +117,7 @@ That is the object properties, definition and examples values:
       "companyCode": "I",
       "customerEmail": "cbolivar82@gmail.com",
       "customerTelephone": "",
-      "customerAddress": "CRR.4 / CLL.4 Y 5. CASA 05-00. MONTEZUMA 2.,CERCADELA PARADADE RAPIDITO MARIA ESTRELLA.Barquisimeto     111",
+      "customerAddress": "CRR.4 ",
       "isCopyDocument": true
    }
 ]
