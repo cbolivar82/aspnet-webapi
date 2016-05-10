@@ -36,7 +36,7 @@ That is the object properties, definition and examples values:
 | Filters.Values            | String array to set multiples values on query | ["value1", "value2" ,"value3"] |
 
 
-###DataType allow the following values:###
+####DataType allow the following values:####
 
 `[1] Represent a Numeric value.`
 
