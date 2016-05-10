@@ -21,13 +21,13 @@ That is the object properties, definition and examples values:
 
 
 | Property                  | Definition            | Example               |
-| --------------------------|:---------------------:| ---------------------:|
+|:--------------------------|:----------------------|:---------------------|
 | ResourceType              | You must indicate if it is a table or store procedure         | "sp" or "table"               |
 | ResourceName              | You must indicate the name of table or store procedure| "Customer" or "sp_CustomerSelect" |
-| ConnectionStringName      | You must indicate the connection string name on the web.config | |
+| ConnectionStringName      | You must indicate the connection string name that stroge on the web.config | |
 | Top                       | It is to do a select with top on select statements | - |
 | Fields                    | It is a string array with field to select if it is null the service do a select * | ["field1", "field2", "field3"] |
-| Filters                   | It is an object array with filter to where clausule if it is null the service do a select * | - |
+| Filters                   | It is an object array with filter to where clausulae if it is null the service do a select * | - |
 | Filters.Name              | It is the name to filter or parameter either table or store procedure | |
 | Filters.OrderBy           | It is the definition to order by to query, if you set use null the sort will be omit | "ASC", "DSC" | 
 | Filters.DataType          | This is for define the type to filter| -|
@@ -42,7 +42,7 @@ That is the object properties, definition and examples values:
 
 `[2] Represent Date value with the format mm/dd/yyyy.`
 
-`[3] When you use this type, the where clausule will be a LIKE operator (i.e. LIKE '%value%').`
+`[3] When you use this type, the where clausulae will be a LIKE operator (i.e. LIKE '%value%').`
 
 ##That is the full structure object for request:##
 
