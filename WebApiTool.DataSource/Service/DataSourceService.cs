@@ -62,7 +62,7 @@ namespace WebApiTool.DataSource.Service
             if (!string.IsNullOrEmpty(tableName))
             {
                 //Get SQL queryTemp to execute on DB
-                var queryTemp = DbHelper.GenerateQuerySQL(tableName
+                var queryTemp = DbHelper.GenerateQuerySQLWithParam(tableName
                     , request.Fields
                     , request.Filters
                     , request.Top
@@ -73,7 +73,8 @@ namespace WebApiTool.DataSource.Service
                 connection.Open();
 
                 //Get a prepare data to Json
-                OleDbDataReader dataReader = DbHelper.ExecuteQuery(ref connection, queryTemp);
+                ////--- {before 5/14/2016} ----> OleDbDataReader dataReader = DbHelper.ExecuteQueryWithParams(ref connection, queryTemp, request.Filters);
+                OleDbDataReader dataReader = DbHelper.ExecuteQueryWithParams(ref connection, queryTemp, request.Filters);
                 data = DataHelper.PrepareToSerializeData(ref dataReader, false);
 
 

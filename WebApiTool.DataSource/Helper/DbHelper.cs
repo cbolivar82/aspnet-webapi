@@ -108,31 +108,137 @@ namespace WebApiTool.DataSource.Helper
 
             return true;
         }
-        public static string GetSpName(string connectionStringValue, string spName)
+        public static string GenerateQuerySQL(string tableName, IEnumerable<string> fields, IEnumerable<DataSourceFilter> reportFilters, int? top)
         {
-            spName = spName.Replace("-", "_");
-            OleDbConnection connection = new OleDbConnection();
-            string newSpName = spName;
-
-            int count = 1;
-
-            connection = new OleDbConnection(connectionStringValue);
-            connection.Open();
-
-            OleDbCommand command = new OleDbCommand();
-            command.Connection = connection;
-            command.CommandText = QueryDbHelper.GetQueryExistsSP(spName);
-            while (Convert.ToInt32(command.ExecuteScalar()) > 0)
+            StringBuilder TSQL = new StringBuilder();
+            StringBuilder whereClausule = new StringBuilder();
+            StringBuilder orderByClausule = new StringBuilder();
+            const string operAND = " AND ";
+            TSQL.Append("SELECT ");
+            if (top != null && top > 0)
             {
-                newSpName = spName + "_" + count.ToString();
-                command.CommandText = QueryDbHelper.GetQueryExistsSP(newSpName);
-                count++;
+                TSQL.Append($" TOP {top} ");
             }
 
-            return newSpName;
+            #region [Select]
 
+            if (fields != null)
+            {
+                foreach (string field in fields)
+                {
+                    TSQL.Append(field);
+                    if (fields.Last() != field)
+                        TSQL.Append(", ");
+                }
+            }
+            else
+            {
+                TSQL.Append(" * ");
+            }
+
+            #endregion
+
+            #region [From]
+            TSQL.Append(" FROM " + tableName + " ");
+            #endregion
+
+            #region [Where]
+            if (reportFilters != null && reportFilters.Count() > 0)
+            {
+
+                for (int index = 0; index < reportFilters.Count(); index++)
+                {
+                    var filter = reportFilters.ToList()[index];
+
+                    #region  <<Build Where Clausule>>
+                    if (filter.Operator != null)
+                    {
+                        #region <Build Where>
+                        {
+                            if (filter.Values != null && filter.Values.Count > 0)
+                            {
+                                //Multiples Values
+                                #region <Multiples Values>
+
+                                whereClausule.Append(filter.Name);
+                                whereClausule.Append(filter.Operator == "=" ? " IN " : " NOT IN ");
+                                whereClausule.Append(" (");
+
+                                for (int j = 0; j < filter.Values.Count; j++)
+                                {
+                                    whereClausule.Append(ParseFilterToQuery(filter.DataType, filter.Values[j]));
+
+                                    if (j <= filter.Values.Count - 2)
+                                        whereClausule.Append(",");
+                                }
+                                whereClausule.Append(") ");
+                                #endregion
+
+                                whereClausule.Append(operAND);
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(filter.Value))
+                                {
+                                    //Single value
+                                    whereClausule.Append(" " + filter.Name + " " + filter.Operator + " " + ParseFilterToQuery(filter.DataType, filter.Value) + " ");
+                                    whereClausule.Append(operAND);
+                                }
+                            }
+                        }
+                        #endregion
+                    }
+                    #endregion
+
+                    #region <<Build OrderBy Clausule>>
+                    if (!string.IsNullOrEmpty(filter.OrderBy))
+                    {
+                        orderByClausule.Append(" " + filter.Name + " " + filter.OrderBy);
+                        orderByClausule.Append(", ");
+                    }
+                    #endregion
+                }
+
+
+                //--> Remove AND first and last calusule and Add Where clausule to Query
+                if (!string.IsNullOrEmpty(whereClausule.ToString()))
+                {
+                    #region <Remove first / Last "AND">
+                    string sTemp = whereClausule.ToString();
+
+                    //Remove first AND
+                    if (sTemp.Substring(0, operAND.Length).Replace(Environment.NewLine, string.Empty) == operAND)
+                    {
+                        string temp = sTemp.Substring(operAND.Length, sTemp.Length - operAND.Length);
+                        whereClausule = new StringBuilder(temp);
+                        sTemp = whereClausule.ToString();
+                    }
+
+                    //Remove last AND
+                    if (sTemp.Substring(sTemp.Length - operAND.Length, operAND.Length).Replace(Environment.NewLine, string.Empty) == operAND)
+                    {
+                        string temp = sTemp.Substring(0, sTemp.Length - operAND.Length);
+                        whereClausule = new StringBuilder(temp);
+                    }
+                    #endregion
+
+                    TSQL.Append(" WHERE ");
+                    TSQL.Append(whereClausule.ToString());
+                }
+
+                //--> Add OrderBy Clausule to Query
+                if (!string.IsNullOrEmpty(orderByClausule.ToString()))
+                {
+                    //--> Remove the last "," and concat on query Clasule OrderBy
+                    TSQL.Append(" ORDER BY ");
+                    TSQL.Append(orderByClausule.ToString().Substring(0, orderByClausule.ToString().Length - 2));
+                }
+            }
+            #endregion
+
+            return TSQL.ToString();
         }
-        public static string GenerateQuerySQL(string tableName, IEnumerable<string> fields, IEnumerable<DataSourceFilter> reportFilters, int? top)
+        public static string GenerateQuerySQLWithParam(string tableName, IEnumerable<string> fields, IEnumerable<DataSourceFilter> reportFilters, int? top)
         {
             StringBuilder TSQL = new StringBuilder();
             StringBuilder whereClausule = new StringBuilder();
@@ -205,17 +311,13 @@ namespace WebApiTool.DataSource.Helper
                                 if (!string.IsNullOrEmpty(filter.Value))
                                 {
                                     //Single value
-                                    whereClausule.Append(" " + filter.Name + " " + filter.Operator + " " + ParseFilterToQuery(filter.DataType, filter.Value) + " ");
+                                    whereClausule.Append($" {filter.Name} {filter.Operator} ? ");
                                     whereClausule.Append(operAND);
                                 }
                             }
                         }
                         #endregion
                     }
-                    //else
-                    //{
-                    //    throw new Exception(string.Concat("The filter [", filter.Name, "]", " has not perator operator=>[", filter.Operator, "]"));
-                    //}
                     #endregion
 
                     #region <<Build OrderBy Clausule>>
@@ -266,10 +368,29 @@ namespace WebApiTool.DataSource.Helper
 
             return TSQL.ToString();
         }
+
         public static OleDbDataReader ExecuteQuery(ref OleDbConnection connection, string query)
         {
             OleDbCommand command = new OleDbCommand(query, connection);
             command.CommandType = CommandType.Text;
+
+            OleDbDataReader reader = command.ExecuteReader();
+            return reader;
+
+        }
+
+        public static OleDbDataReader ExecuteQueryWithParams(ref OleDbConnection connection, string query, IEnumerable<DataSourceFilter> reportFilter)
+        {////--- {new method 5/14/2016} ----> 
+            OleDbCommand command = new OleDbCommand(query, connection);
+            command.CommandType = CommandType.Text;
+
+            #region <Add Parameters>
+            if (reportFilter!= null && reportFilter.Count() > 0)
+            {
+                reportFilter.ToList().ForEach(f => f.Name = $"@{f.Name}");
+                command.Parameters.AddRange(LoadParameters(reportFilter.Where(w => !string.IsNullOrEmpty(w.Value))));
+            }
+            #endregion
 
             OleDbDataReader reader = command.ExecuteReader();
             return reader;
